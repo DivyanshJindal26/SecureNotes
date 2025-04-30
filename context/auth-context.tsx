@@ -23,7 +23,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = (password: string) => {
     // Hardcoded password check
-    if (password === process.env.NEXT_PUBLIC_PASSWORD) {
+    const envPassword = process.env.NEXT_PUBLIC_PASSWORD ?? ""
+    if (password === envPassword) {
       setIsAuthenticated(true)
       localStorage.setItem("isAuthenticated", "true")
       return true
